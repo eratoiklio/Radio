@@ -1,6 +1,13 @@
 $line-width: 3px;
 $width: 350px;
-
+$station-img-size :100px;
+$main-color: #2f2f3a;
+$second-color: #eeae61;
+$third-color:#282832;
+$img-color :white;
+$volume-size:20px;
+$extentionPadding:30px;
+$plus-min-line-size: 2px;
 div,
 p {
     box-sizing: border-box;
@@ -13,7 +20,7 @@ p {
 
 .header {
     padding: 0 30px;
-    background: #eeae61;
+    background: $second-color;
     width: $width;
     height: 100px;
     border-radius: 24px 24px 0 0;
@@ -30,21 +37,23 @@ p {
 }
 
 .arrow {
-    border: solid red;
+    border: solid $img-color;
     border-width: 0 $line-width $line-width 0;
-    padding: 10px;
-    // width: 30px;
-    //  height:30px;
+    // padding: 10px;
+    width: 30px;
+     height:30px;
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }
 
 .main {
-    background: #2f2f3a;
+    background: $main-color;
     width: $width;
     height: 400px;
     color: white;
-    overflow: auto;
+    // overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .particularStation {
@@ -64,7 +73,7 @@ p {
 }
 
 .footer {
-    background: #282832;
+    background: $third-color;
     width: $width;
     height: 100px;
     border-radius: 0 0 24px 24px;
@@ -75,7 +84,7 @@ p {
 
     & :first-child{
         text-transform: uppercase;
-        color: orange;
+        color: $second-color;
     }
 }
 
@@ -95,7 +104,7 @@ p {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: $line-width solid blue;
+    border: $line-width solid $img-color;
     border-top-color: transparent;
     position: relative;
 
@@ -105,7 +114,7 @@ p {
         border-radius: 50%;
         width: $line-width;
         height: $line-width;
-        background-color: red;
+        background-color: $img-color;
         content: ' ';
     }
 
@@ -121,7 +130,7 @@ p {
 }
 
 .line {
-    border-left: $line-width solid red;
+    border-left: $line-width solid $img-color;
     // margin: 0 auto;
     height: 10px;
     width: 0;
@@ -135,7 +144,7 @@ p {
         border-radius: 50%;
         width: $line-width;
         height: $line-width;
-        background-color: green;
+        background-color: $img-color;
         content: ' ';
     }
 
@@ -152,10 +161,60 @@ p {
 
 .extended {
     width: $width;
-    height: 100px;
-    background: pink;
+    height: $station-img-size +2*$extentionPadding;
+    display: flex;
+    justify-content: space-between;
+    padding:$extentionPadding;
+    // background: pink;
+
 }
 
 .hidden {
     display: none;
+}
+%volume
+{
+    width: $volume-size;
+    height: $volume-size;
+    border-radius: 50%;
+    border: 1px solid $img-color;
+    align-self: center;
+    position: relative;
+}
+@mixin operation-symbol($top, $left, $rot)
+{
+    width: 8px;
+    height: 2px;
+    background: $img-color;
+    position: absolute;
+    content: " ";
+    top: $top;
+    left: $left;
+    transform: rotate($rot);
+}
+.minus
+{
+    @extend %volume;
+    &:after {
+    @include operation-symbol((($volume-size)-($plus-min-line-size))/2-1,5px,0);
+    }
+}
+.plus
+{
+    @extend .minus;
+    &::before{
+        @include operation-symbol((($volume-size)-($plus-min-line-size))/2-1, 5px ,90deg);
+    }
+}
+
+
+.stationImage
+{
+    width: $station-img-size;
+    height: $station-img-size;
+    background: pink;
+    border-radius: 50%;
+    border: 1px solid $img-color;
+
+
 }

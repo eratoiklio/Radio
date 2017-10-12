@@ -18,4 +18,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    //power
+    document.querySelector(".power").onclick=function()
+    {
+        console.log("power");
+    };
+    //arrow
+    document.querySelector(".arrow").onclick=function()
+    {
+        console.log("arrow");
+    };
+    //plus
+    document.querySelectorAll(".plus").forEach(function(element, index) {
+        element.onclick = function() {
+            console.log("plus");
+}});
+    //minus
+    document.querySelectorAll(".minus").forEach(function(element, index) {
+        element.onclick = function() {
+            console.log("minus");
+}});
 });
