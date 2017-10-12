@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentStation.classList.add("hidden");
             }
             currentStation = this.parentNode.querySelector(".extended");
+            const name = this.parentNode.querySelector(".stationName").innerText;
             currentStation.classList.remove("hidden");
-
+            document.querySelector(".currentStationName").innerText=name;
         }
     });
 
