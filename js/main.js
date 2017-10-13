@@ -1,41 +1,66 @@
 require('../scss/style.scss');
+import stationsName from "../stationsName.js"
+$(() => {
 
-$(()=>{
-    console.log("script loaded");
+    const tab = $(stationsName)[0].data;
+    $(tab).each(function(index, element) {
+        const newParticStat = $("<div class='particularStation'>");
+        const newExtend = $("<div class='extended hidden'>");
+        const newMinus = $("<div class='minus'>");
+        const newStationImage = $("<div class='stationImage'>");
+        const newPlus = $("<div class='plus'>");
+        const newShortcut = $("<div class='shortcut'>");
+        const newStationName = $("<div class='stationName'>").text(element.name);
+        const newfm = $("<div class='fm'>").text(element.fm);
+        newParticStat.data("adress", element.adress);
+        newExtend.prepend(newMinus);
+        newExtend.append(newStationImage);
+        newExtend.append(newPlus);
+        newShortcut.prepend(newStationName);
+        newShortcut.append(newfm);
+        newParticStat.prepend(newExtend);
+        newParticStat.append(newShortcut);
+        $(".main").append(newParticStat);
+
+    });
+
+    // console.log(check);
     const stations = $(".shortcut");
     let currentStation;
     stations.each(function(index, element) {
-        $(element).on('click',function() {
+        $(element).on('click', function() {
 
-            console.log($(this).parent());
             if (currentStation != undefined) {
                 currentStation.addClass("hidden");
             }
-            currentStation = $(this).parent().find(".extended");
-            const name = $(this).parent().find(".stationName").innerText;
+            const parent = $(this).parent();
+            currentStation = parent.find(".extended");
+            const name = parent.find(".stationName").text();
             currentStation.removeClass("hidden");
-            $(".currentStationName").innerText=name;
+            $(".currentStationName").text(name);
         })
     });
 
     //power
-    $(".power").on('click',function()
-    {
+    $(".power").on('click', function() {
         console.log("power");
     })
     //arrow
-    $(".arrow").on('click',function()
-    {
+    $(".arrow").on('click', function() {
         console.log("arrow");
     })
     //plus
     $(".plus").each(function(index, element) {
-        $(element).on('click',function() {
+        $(element).on('click', function() {
             console.log("plus");
-});});
-//     //minus
+        });
+    });
+    //     //minus
     $(".minus").each(function(index, element) {
         $(element).on('click ', function() {
             console.log("minus");
-});});
+        });
+    });
 });
+// API key	dc3f71b3f47195847cbaa3eb74c1ed72
+// Shared secret	a4e06367e623252ab0431d2439f75662
