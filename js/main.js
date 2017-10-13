@@ -1,41 +1,41 @@
 require('../scss/style.scss');
 
-document.addEventListener('DOMContentLoaded', function() {
+$(()=>{
     console.log("script loaded");
-    const stations = document.querySelectorAll(".shortcut");
+    const stations = $(".shortcut");
     let currentStation;
-    stations.forEach(function(element, index) {
-        element.onclick = function() {
+    stations.each(function(index, element) {
+        $(element).on('click',function() {
 
-            console.log(this.parentNode);
+            console.log($(this).parent());
             if (currentStation != undefined) {
-                currentStation.classList.add("hidden");
+                currentStation.addClass("hidden");
             }
-            currentStation = this.parentNode.querySelector(".extended");
-            const name = this.parentNode.querySelector(".stationName").innerText;
-            currentStation.classList.remove("hidden");
-            document.querySelector(".currentStationName").innerText=name;
-        }
+            currentStation = $(this).parent().find(".extended");
+            const name = $(this).parent().find(".stationName").innerText;
+            currentStation.removeClass("hidden");
+            $(".currentStationName").innerText=name;
+        })
     });
 
     //power
-    document.querySelector(".power").onclick=function()
+    $(".power").on('click',function()
     {
         console.log("power");
-    };
+    })
     //arrow
-    document.querySelector(".arrow").onclick=function()
+    $(".arrow").on('click',function()
     {
         console.log("arrow");
-    };
+    })
     //plus
-    document.querySelectorAll(".plus").forEach(function(element, index) {
-        element.onclick = function() {
+    $(".plus").each(function(index, element) {
+        $(element).on('click',function() {
             console.log("plus");
-}});
-    //minus
-    document.querySelectorAll(".minus").forEach(function(element, index) {
-        element.onclick = function() {
+});});
+//     //minus
+    $(".minus").each(function(index, element) {
+        $(element).on('click ', function() {
             console.log("minus");
-}});
+});});
 });

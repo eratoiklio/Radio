@@ -51,8 +51,8 @@ p {
     width: $width;
     height: 400px;
     color: white;
-    // overflow-y: auto;
-    overflow-y: hidden;
+    overflow-y: auto;
+    // overflow-y: hidden;
     overflow-x: hidden;
 }
 
@@ -165,7 +165,7 @@ p {
     display: flex;
     justify-content: space-between;
     padding:$extentionPadding;
-    // background: pink;
+
 
 }
 
