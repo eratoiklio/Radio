@@ -34,9 +34,15 @@ $(() => {
                 currentStation.addClass("hidden");
             }
             const parent = $(this).parent();
+            console.log(parent);
             currentStation = parent.find(".extended");
             const name = parent.find(".stationName").text();
             currentStation.removeClass("hidden");
+             const container =$(".main");
+             container.animate({
+                 scrollTop: $(parent).offset().top - container.offset().top + container.scrollTop()-$(parent).height()/2
+             });
+
             $(".currentStationName").text(name);
         })
     });
