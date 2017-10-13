@@ -213,6 +213,9 @@ p {
     width: $station-img-size;
     height: $station-img-size;
     background: pink;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: $station-img-size $station-img-size !important;
     border-radius: 50%;
     border: 1px solid $img-color;
 

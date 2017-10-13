@@ -2,17 +2,26 @@ require('../scss/style.scss');
 import stationsName from "../stationsName.js"
 $(() => {
 
-    const tab = $(stationsName)[0].data;
+    const tab = $(stationsName);
+    // console.log(tab);
     $(tab).each(function(index, element) {
+
         const newParticStat = $("<div class='particularStation'>");
         const newExtend = $("<div class='extended hidden'>");
         const newMinus = $("<div class='minus'>");
-        const newStationImage = $("<div class='stationImage'>");
+
+        const newStationImage = $("<div class='stationImage'>")
+        if(element.image.url!=""){
+            newStationImage.css( "background", "url("+element.image.url+")" );
+        }        
+        else {
+            newStationImage.css( "background", "url(./img/default.jpg)" );
+        }
         const newPlus = $("<div class='plus'>");
         const newShortcut = $("<div class='shortcut'>");
         const newStationName = $("<div class='stationName'>").text(element.name);
-        const newfm = $("<div class='fm'>").text(element.fm);
-        newParticStat.data("adress", element.adress);
+        const newfm = $("<div class='fm'>").text(element.categories[0].ancestry);
+        newParticStat.data("stream", element.streams.stream);
         newExtend.prepend(newMinus);
         newExtend.append(newStationImage);
         newExtend.append(newPlus);
@@ -21,7 +30,7 @@ $(() => {
         newParticStat.prepend(newExtend);
         newParticStat.append(newShortcut);
         $(".main").append(newParticStat);
-
+        console.log(newParticStat.data("stream"));
     });
 
     // console.log(check);
