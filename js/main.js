@@ -1,9 +1,14 @@
 require('../scss/style.scss');
 import stationsName from "../stationsName.js"
 $(() => {
-
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var gainNode = audioCtx.createGain();
+    var biquadFilter = audioCtx.createBiquadFilter();
     const tab = $(stationsName);
     // console.log(tab);
+
+    var a = new Audio("http://icecast.omroep.nl/3fm-serioustalent-mp3");
+    a.play();
     $(tab).each(function(index, element) {
 
         const newParticStat = $("<div class='particularStation'>");
@@ -13,7 +18,7 @@ $(() => {
         const newStationImage = $("<div class='stationImage'>")
         if(element.image.url!=""){
             newStationImage.css( "background", "url("+element.image.url+")" );
-        }        
+        }
         else {
             newStationImage.css( "background", "url(./img/default.jpg)" );
         }
@@ -76,6 +81,7 @@ $(() => {
             console.log("minus");
         });
     });
+    
 });
 // API key	dc3f71b3f47195847cbaa3eb74c1ed72
 // Shared secret	a4e06367e623252ab0431d2439f75662

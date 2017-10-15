@@ -24,7 +24,7 @@ export default [
     ],
     "streams": [
       {
-        "stream": "http://vip-icecast.538.lw.triple-it.nl:80/WEB06_MP3",
+        "stream": "http://icecast.omroep.nl/3fm-serioustalent-mp3",
         "bitrate": 128,
         "content_type": "audio/mpeg",
         "status": 1
@@ -59,7 +59,7 @@ export default [
     ],
     "streams": [
       {
-      "stream": "http://vip-icecast.538.lw.triple-it.nl:80/WEB08_MP3",
+      "stream": "http://icecast.omroep.nl/3fm-bb-mp3",
       "bitrate": 128,
       "content_type": "audio/mpeg",
       "listeners": 10,
